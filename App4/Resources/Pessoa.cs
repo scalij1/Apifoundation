@@ -9,11 +9,20 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Newtonsoft.Json;
 
 namespace App4.Resources
 {
-    public class Class1
+    public class Pessoa
     {
-        public string cpf { get; set;}
+        public string firstName { get; set;}
+        public string lastName { get; set; }
+        public string consumerId { get; set; }
     }
+
+    
+
+
 }
+
+    
