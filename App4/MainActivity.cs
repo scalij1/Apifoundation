@@ -12,7 +12,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
-using System;
+
 
 namespace App4
 {
@@ -29,12 +29,11 @@ namespace App4
         RestClient orderId { get; set; }
         RestRequest requestorderId { get; set; }
         IRestResponse answerorder { get; set; }
-        public int EndDate { get; private set; }
-        public int StartDate { get; private set; }
-
+        RadioButton buttonCancelado;
+        RadioButton buttonAberto;
+        RadioButton buttonAgendado;
         TextView txtnome;
         TextView txtorder;
-        TextView txtmensagem;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -42,13 +41,15 @@ namespace App4
 
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
-            btnConsumer = FindViewById<Button>(Resource.Id.btnConsumer);
-            edtcpf = FindViewById<EditText>(Resource.Id.edtcpf);
             txtcpf = FindViewById<TextView>(Resource.Id.txtcpf);
             txtsobrenome = FindViewById<TextView>(Resource.Id.txtresposta);
             txtnome = FindViewById<TextView>(Resource.Id.txtNome);
             txtorder = FindViewById<TextView>(Resource.Id.txtorder);
-            txtmensagem = FindViewById<TextView>(Resource.Id.txtMensagem);
+            edtcpf = FindViewById<EditText>(Resource.Id.edtcpf);
+            buttonCancelado = FindViewById<RadioButton>(Resource.Id.rdbtnCancelada);
+            buttonAberto = FindViewById<RadioButton>(Resource.Id.rdbtnAberta);
+            buttonAgendado = FindViewById<RadioButton>(Resource.Id.rdbtnAgendada);
+            btnConsumer = FindViewById<Button>(Resource.Id.btnConsumer);
             btnConsumer.Click += BtnConsumer_Click;
 
         }
@@ -67,8 +68,8 @@ namespace App4
                 Pessoa pessoa = JsonConvert.DeserializeObject<Pessoa>(mensagemConsumer.Content);
                 txtnome.Text = "Nome: " +pessoa.firstName;
                 txtsobrenome.Text = "Sobrenome: "+ pessoa.lastName;
-                
-                // API Consumer Appliances
+
+                // API Consumer service-orders
                 orderId = new RestClient("https://qa.api-latam.whirlpool.com/v1.0/consumers/");
                 requestorderId = new RestRequest("/"+ edtcpf.Text+ "/service-orders", Method.GET);
                 requestorderId.AddHeader("Content-Type", "application/json; charset=utf-8");
@@ -79,18 +80,55 @@ namespace App4
                 var QtdeItens = parse.Count;
                 foreach (var order in requestToken.orders)
                 {
+                   
+
+                    SetContentView(Resource.Layout.Main);
+
+                    var gridview = FindViewById<GridView>(Resource.Id.gridView1);
+                    
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, requestToken.orders.Count, requestToken.orders.Count);
+                    gridview.SetAdapter(adapter);
+
+
                     //for (var i = 0; i < requestToken.orders.Count; i++)
                     //{
-                        object vader = order.order.orderId;
-                        string darth = Convert.ToString(vader);
-                        txtorder.Text = darth + order.order.orderStatusDescription + order.order.orderStatusCode;      
+                    //    object vader = order.order.orderId;
+                    //    string darth = Convert.ToString(vader);
+                    //    string dia = order.order.orderOpeningDate;
+                    //    DateTime aberta = Convert.ToDateTime(dia);
+                    //    txtorder.Text = " orderId: " + darth + " Service Provider Id: " + order.order.serviceProviderId + " Data de abertura da ordem: " + aberta;
+
                     //}
+
+                    //if (order.order.orderStatusCode == "CANC")
+                    //{
+                    //    buttonCancelado.Visibility = Android.Views.ViewStates.Visible;
+                    //    buttonAgendado.Visibility = Android.Views.ViewStates.Invisible;
+                    //    buttonAberto.Visibility = Android.Views.ViewStates.Invisible;
+                    //    buttonCancelado.Clickable = false;
+
+                    //}
+                    //else if (order.order.orderStatusCode == "ABRT")
+                    //{
+                    //    buttonCancelado.Visibility = Android.Views.ViewStates.Invisible;
+                    //    buttonAgendado.Visibility = Android.Views.ViewStates.Invisible;
+                    //    buttonAberto.Visibility = Android.Views.ViewStates.Visible;
+                    //    buttonAberto.Clickable = false;
+                    //}
+                    //else if (order.order.orderStatusCode == "AGEN")
+                    //{
+                    //    buttonCancelado.Visibility = Android.Views.ViewStates.Invisible;
+                    //    buttonAgendado.Visibility = Android.Views.ViewStates.Visible;
+                    //    buttonAberto.Visibility = Android.Views.ViewStates.Invisible;
+                    //    buttonAgendado.Clickable = false;
+                    //}
+
                 }
 
-               
-                
-                
-                
+
+
+
+
 
             }
             catch (Exception)

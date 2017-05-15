@@ -16,7 +16,7 @@ public class Order2
     public string orderStatusCode { get; set; }
     public string orderStatusDescription { get; set; }
     public int serviceProviderId { get; set; }
-    public DateTime orderOpeningDate { get; set; }
+    public string orderOpeningDate { get; set; }
     public string orderSchedulingDate { get; set; }
     public string orderSchedulingPeriod { get; set; }
     public object orderSettlementDate { get; set; }
