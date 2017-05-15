@@ -44,11 +44,11 @@ namespace App4
             txtcpf = FindViewById<TextView>(Resource.Id.txtcpf);
             txtsobrenome = FindViewById<TextView>(Resource.Id.txtresposta);
             txtnome = FindViewById<TextView>(Resource.Id.txtNome);
-            txtorder = FindViewById<TextView>(Resource.Id.txtorder);
+            //txtorder = FindViewById<TextView>(Resource.Id.txtorder);
             edtcpf = FindViewById<EditText>(Resource.Id.edtcpf);
-            buttonCancelado = FindViewById<RadioButton>(Resource.Id.rdbtnCancelada);
-            buttonAberto = FindViewById<RadioButton>(Resource.Id.rdbtnAberta);
-            buttonAgendado = FindViewById<RadioButton>(Resource.Id.rdbtnAgendada);
+            //buttonCancelado = FindViewById<RadioButton>(Resource.Id.rdbtnCancelada);
+            //buttonAberto = FindViewById<RadioButton>(Resource.Id.rdbtnAberta);
+            //buttonAgendado = FindViewById<RadioButton>(Resource.Id.rdbtnAgendada);
             btnConsumer = FindViewById<Button>(Resource.Id.btnConsumer);
             btnConsumer.Click += BtnConsumer_Click;
 
@@ -75,18 +75,25 @@ namespace App4
                 requestorderId.AddHeader("Content-Type", "application/json; charset=utf-8");
                 requestorderId.AddHeader("Authorization", "Bearer 70197e6c-d81b-384c-bb32-d69e8c10b101");
                 answerorder = orderId.Execute(requestorderId);
-                var requestToken = JsonConvert.DeserializeObject<RootObject>(answerorder.Content);
+                var results = JsonConvert.DeserializeObject<RootObject>(answerorder.Content);
+
+      
+
                 var parse = JObject.Parse(answerorder.Content);
                 var QtdeItens = parse.Count;
-                foreach (var order in requestToken.orders)
-                {
-                   
+                var var = Convert.ToString(results);
+                JSONArray resultados [] = new JSONArray(var);
+                String[] resultsArray = new String[] (resultados);
 
-                    SetContentView(Resource.Layout.Main);
+                // foreach (var order in results.orders)
+                //{
+
+
+                SetContentView(Resource.Layout.Main);
 
                     var gridview = FindViewById<GridView>(Resource.Id.gridView1);
                     
-                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, requestToken.orders.Count, requestToken.orders.Count);
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, Android.Resource.Layout.SimpleListItem1, requestToken.orders.Count);
                     gridview.SetAdapter(adapter);
 
 
@@ -123,7 +130,7 @@ namespace App4
                     //    buttonAgendado.Clickable = false;
                     //}
 
-                }
+                //}
 
 
 
