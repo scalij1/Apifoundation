@@ -12,7 +12,7 @@
 
 public class Order2
 {
-    public object orderId { get; set; }
+    public string orderId { get; set; }
     public string orderStatusCode { get; set; }
     public string orderStatusDescription { get; set; }
     public int serviceProviderId { get; set; }
