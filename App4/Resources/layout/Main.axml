@@ -37,17 +37,26 @@
         android:scrollbars="vertical"
         android:layout_marginTop="0.0dp" />
     <TextView
-        android:text="Order"
         android:layout_width="match_parent"
-        android:layout_height="22.5dp"
-        android:id="@+id/txtorder"
+        android:layout_height="49.5dp"
+        android:id="@+id/txtresp0"
+        android:layout_marginBottom="19.0dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="52.5dp"
+        android:id="@+id/txtresp1" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="46.5dp"
+        android:id="@+id/txtresp2" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45.0dp"
+        android:id="@+id/txtresp3" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="49.0dp"
+        android:id="@+id/txtresp4"
         android:layout_marginTop="0.0dp"
-        android:layout_marginBottom="0.0dp" />
-    <GridView
-        android:minWidth="25px"
-        android:minHeight="25px"
-        android:layout_width="match_parent"
-        android:layout_height="393.0dp"
-        android:id="@+id/gridView1"
-        android:background="@android:color/background_light" />
+        android:layout_marginBottom="212.0dp" />
 </LinearLayout>
