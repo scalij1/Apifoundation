@@ -12,6 +12,8 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 using System.Globalization;
+using Android.Graphics;
+using Android.Content.Res;
 
 
     namespace App4
@@ -67,15 +69,15 @@ using System.Globalization;
         {
             try
             {
-                //// API Consumer CPF
+                // API Consumer CPF
 
-                //consumer = new RestClient("https://qa.api-latam.whirlpool.com/v1.0/consumers");
-                //cpf = new RestRequest("/" + edtcpf.Text, Method.GET);
-                //cpf.AddHeader("Content-Type", "application/json; charset=utf-8");
-                //cpf.AddHeader("Authorization", "Bearer fed6b2f0-7aba-3339-9813-7fc9387e2581");
-                //mensagemConsumer = consumer.Execute(cpf);
-                //Pessoa pessoa = JsonConvert.DeserializeObject<Pessoa>(mensagemConsumer.Content);
-                //txtnome.Text = "Nome: " + pessoa.firstName + "Sobrenome: " + pessoa.lastName;
+                consumer = new RestClient("https://qa.api-latam.whirlpool.com/v1.0/consumers");
+                cpf = new RestRequest("/" + edtcpf.Text, Method.GET);
+                cpf.AddHeader("Content-Type", "application/json; charset=utf-8");
+                cpf.AddHeader("Authorization", "Bearer fed6b2f0-7aba-3339-9813-7fc9387e2581");
+                mensagemConsumer = consumer.Execute(cpf);
+                Pessoa pessoa = JsonConvert.DeserializeObject<Pessoa>(mensagemConsumer.Content);
+                txtnome.Text = "Nome: " + pessoa.firstName + " " + pessoa.lastName;
 
 
                 // API Consumer service-orders
@@ -101,37 +103,89 @@ using System.Globalization;
                        + "Status Description: " + " - " + requestToken.orders[3].order.orderStatusDescription; ;
                         var respostas4 = requestToken.orders[4].order.orderId + " " + "StatusCode" + " - " + requestToken.orders[4].order.orderStatusCode + " "
                        + "Status Description: " + " - " + requestToken.orders[4].order.orderStatusDescription; ;
-
-
+                    if (requestToken.orders[0].order.orderStatusCode == "CANC")
+                    {
                         txtresp0.Text = JsonConvert.ToString(respostas0);
+                        txtresp0.SetTextColor(Color.ParseColor("red"));
+                    }
+                    else if (requestToken.orders[0].order.orderStatusCode == "ABRT")
+                    {
+                        txtresp0.Text = JsonConvert.ToString(respostas0);
+                        txtresp0.SetTextColor(Color.ParseColor("green"));
+                    }
+
+                    else if (requestToken.orders[0].order.orderStatusCode == "AGEN")
+                    {
+                        txtresp0.Text = JsonConvert.ToString(respostas0);
+                        txtresp0.SetTextColor(Color.ParseColor("blue"));
+                    }
+
+                    if (requestToken.orders[1].order.orderStatusCode == "CANC")
+                    {
                         txtresp1.Text = JsonConvert.ToString(respostas1);
+                        txtresp1.SetTextColor(Color.ParseColor("red"));
+                    }
+                    else if (requestToken.orders[1].order.orderStatusCode == "ABRT")
+                    {
+                        txtresp1.Text = JsonConvert.ToString(respostas1);
+                        txtresp1.SetTextColor(Color.ParseColor("green"));
+                    }
+
+                    else if (requestToken.orders[1].order.orderStatusCode == "AGEN")
+                    {
+                        txtresp1.Text = JsonConvert.ToString(respostas1);
+                        txtresp1.SetTextColor(Color.ParseColor("blue"));
+                    }
+
+                    if (requestToken.orders[2].order.orderStatusCode == "CANC")
+                    {
                         txtresp2.Text = JsonConvert.ToString(respostas2);
+                        txtresp2.SetTextColor(Color.ParseColor("red"));
+                    }
+                    else if (requestToken.orders[2].order.orderStatusCode == "ABRT")
+                    {
+                        txtresp2.Text = JsonConvert.ToString(respostas2);
+                        txtresp2.SetTextColor(Color.ParseColor("green"));
+                    }
+
+                    else if (requestToken.orders[2].order.orderStatusCode == "AGEN")
+                    {
+                        txtresp2.Text = JsonConvert.ToString(respostas2);
+                        txtresp2.SetTextColor(Color.ParseColor("blue"));
+                    }
+                    if (requestToken.orders[3].order.orderStatusCode == "CANC")
+                    {
                         txtresp3.Text = JsonConvert.ToString(respostas3);
+                        txtresp3.SetTextColor(Color.ParseColor("red"));
+                    }
+                    else if (requestToken.orders[3].order.orderStatusCode == "ABRT")
+                    {
+                        txtresp3.Text = JsonConvert.ToString(respostas3);
+                        txtresp3.SetTextColor(Color.ParseColor("green"));
+                    }
+
+                    else if (requestToken.orders[3].order.orderStatusCode == "AGEN")
+                    {
+                        txtresp3.Text = JsonConvert.ToString(respostas3);
+                        txtresp3.SetTextColor(Color.ParseColor("blue"));
+                    }
+                    if (requestToken.orders[4].order.orderStatusCode == "CANC")
+                    {
                         txtresp4.Text = JsonConvert.ToString(respostas4);
+                        txtresp4.SetTextColor(Color.ParseColor("red"));
+                    }
+                    else if (requestToken.orders[4].order.orderStatusCode == "ABRT")
+                    {
+                        txtresp4.Text = JsonConvert.ToString(respostas4);
+                        txtresp4.SetTextColor(Color.ParseColor("green"));
+                    }
+
+                    else if (requestToken.orders[4].order.orderStatusCode == "AGEN")
+                    {
+                        txtresp4.Text = JsonConvert.ToString(respostas4);
+                        txtresp4.SetTextColor(Color.ParseColor("blue"));
+                    } 
                 }
-
-
-                //if (order.order.orderStatusCode == "CANC")
-                //{
-                //    buttonCancelado.Visibility = Android.Views.ViewStates.Visible;
-                //    buttonAgendado.Visibility = Android.Views.ViewStates.Invisible;
-                //    buttonAberto.Visibility = Android.Views.ViewStates.Invisible;
-                //    buttonCancelado.Clickable = false;
-                //}
-                //else if (order.order.orderStatusCode == "ABRT")
-                //{
-                //    buttonCancelado.Visibility = Android.Views.ViewStates.Invisible;
-                //    buttonAgendado.Visibility = Android.Views.ViewStates.Invisible;
-                //    buttonAberto.Visibility = Android.Views.ViewStates.Visible;
-                //    buttonAberto.Clickable = false;
-                //}
-                //else if (order.order.orderStatusCode == "AGEN")
-                //{
-                //    buttonCancelado.Visibility = Android.Views.ViewStates.Invisible;
-                //    buttonAgendado.Visibility = Android.Views.ViewStates.Visible;
-                //    buttonAberto.Visibility = Android.Views.ViewStates.Invisible;
-                //    buttonAgendado.Clickable = false;
-                //}
             }
 
             catch (Exception)

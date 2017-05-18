@@ -5,17 +5,24 @@
     android:layout_height="match_parent"
     android:minWidth="25px"
     android:minHeight="25px"
-    android:id="@+id/linearLayout1">
+    android:id="@+id/linearLayout1"
+    android:background="@android:color/background_light">
     <TextView
         android:text="Digite o CPF"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtcpf" />
+        android:id="@+id/txtcpf"
+        android:textColor="@android:color/black"
+        android:textColorHighlight="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textColorLink="@android:color/black"
+        android:textStyle="bold" />
     <EditText
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtcpf" />
+        android:id="@+id/edtcpf"
+        android:background="@android:color/holo_orange_dark" />
     <Button
         android:clickable="true"
         android:onClick="@android:string/search_go"
@@ -27,36 +34,62 @@
         android:text="Nome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/txtNome" />
-    <TextView
-        android:text="Sobrenome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtresposta"
-        android:scrollHorizontally="true"
-        android:scrollbars="vertical"
-        android:layout_marginTop="0.0dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="49.5dp"
-        android:id="@+id/txtresp0"
-        android:layout_marginBottom="19.0dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="52.5dp"
-        android:id="@+id/txtresp1" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="46.5dp"
-        android:id="@+id/txtresp2" />
+        android:id="@+id/txtNome"
+        android:textColorHighlight="@android:color/background_dark"
+        android:textColor="@android:color/background_dark"
+        android:textColorHint="@android:color/background_dark"
+        android:textColorLink="@android:color/background_dark"
+        android:textStyle="bold" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="45.0dp"
-        android:id="@+id/txtresp3" />
+        android:id="@+id/txtresp0"
+        android:text="Order1"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        android:textColorHighlight="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textColorLink="@android:color/black" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="52.5dp"
+        android:id="@+id/txtresp1"
+        android:textColor="@android:color/black"
+        android:textColorHighlight="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textColorLink="@android:color/black"
+        android:textStyle="bold"
+        android:text="Order2" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="46.5dp"
+        android:id="@+id/txtresp2"
+        android:text="Order3"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        android:textColorHighlight="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textColorLink="@android:color/black" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="45.0dp"
+        android:id="@+id/txtresp3"
+        android:text="Order4"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        android:textColorHighlight="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textColorLink="@android:color/black" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="49.0dp"
         android:id="@+id/txtresp4"
         android:layout_marginTop="0.0dp"
-        android:layout_marginBottom="212.0dp" />
+        android:layout_marginBottom="212.0dp"
+        android:text="Order5"
+        android:textColor="@android:color/background_dark"
+        android:textStyle="bold"
+        android:textColorHighlight="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textColorLink="@android:color/black" />
 </LinearLayout>

@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Newtonsoft.Json;
+using Android.Graphics;
 
 namespace App4.Resources
 {
@@ -18,6 +19,7 @@ namespace App4.Resources
         public string firstName { get; set;}
         public string lastName { get; set; }
         public string consumerId { get; set; }
+        public Color TextColor { get; set; }
     }
 
     
