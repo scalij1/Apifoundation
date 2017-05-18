@@ -31,15 +31,13 @@ using Android.Content.Res;
         RestClient orderId { get; set; }
         RestRequest requestorderId { get; set; }
         IRestResponse answerorder { get; set; }
-        //RadioButton buttonCancelado;
-        //RadioButton buttonAberto;
-        //RadioButton buttonAgendado;
         TextView txtnome;
         TextView txtresp0;
         TextView txtresp1;
         TextView txtresp2;
         TextView txtresp3;
         TextView txtresp4;
+        GridView gridview;
 
 
         protected override void OnCreate(Bundle bundle)
@@ -49,17 +47,15 @@ using Android.Content.Res;
             // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
             txtcpf = FindViewById<TextView>(Resource.Id.txtcpf);
-            txtsobrenome = FindViewById<TextView>(Resource.Id.txtresposta);
+         
             txtnome = FindViewById<TextView>(Resource.Id.txtNome);
             txtresp0 = FindViewById<TextView>(Resource.Id.txtresp0);
             txtresp1 = FindViewById<TextView>(Resource.Id.txtresp1);
             txtresp2 = FindViewById<TextView>(Resource.Id.txtresp2);
             txtresp3 = FindViewById<TextView>(Resource.Id.txtresp3);
             txtresp4 = FindViewById<TextView>(Resource.Id.txtresp4);
+            gridview = FindViewById<GridView>(Resource.Id.gridView2);
             edtcpf = FindViewById<EditText>(Resource.Id.edtcpf);
-            //buttonCancelado = FindViewById<RadioButton>(Resource.Id.rdbtnCancelada);
-            //buttonAberto = FindViewById<RadioButton>(Resource.Id.rdbtnAberta);
-            //buttonAgendado = FindViewById<RadioButton>(Resource.Id.rdbtnAgendada);
             btnConsumer = FindViewById<Button>(Resource.Id.btnConsumer);
             btnConsumer.Click += BtnConsumer_Click;
 
@@ -88,7 +84,7 @@ using Android.Content.Res;
                 answerorder = orderId.Execute(requestorderId);
                 var requestToken = JsonConvert.DeserializeObject<RootObject>(answerorder.Content);
                 var end = "";
-
+                
                 for (var i = 0; i < requestToken.orders.Count; i++)
                 {
                         end = requestToken.orders[i].order.orderId + " " + "StatusCode" + " - " + requestToken.orders[i].order.orderStatusCode + " "
@@ -103,6 +99,7 @@ using Android.Content.Res;
                        + "Status Description: " + " - " + requestToken.orders[3].order.orderStatusDescription; ;
                         var respostas4 = requestToken.orders[4].order.orderId + " " + "StatusCode" + " - " + requestToken.orders[4].order.orderStatusCode + " "
                        + "Status Description: " + " - " + requestToken.orders[4].order.orderStatusDescription; ;
+                    JSONArray json = new JSONArray(end);
                     if (requestToken.orders[0].order.orderStatusCode == "CANC")
                     {
                         txtresp0.Text = JsonConvert.ToString(respostas0);

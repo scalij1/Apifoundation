@@ -66,6 +66,9 @@ namespace App4
 			// aapt resource value: 0x7f050002
 			public const int edtcpf = 2131034114;
 			
+			// aapt resource value: 0x7f05000a
+			public const int gridView2 = 2131034122;
+			
 			// aapt resource value: 0x7f050000
 			public const int linearLayout1 = 2131034112;
 			
