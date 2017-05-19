@@ -85,7 +85,7 @@ using Android.Content.Res;
                 {
                     end = requestToken.orders[i].order.orderId + " " + "StatusCode" + " - " + requestToken.orders[i].order.orderStatusCode + " "
                    + "Status Description: " + " - " + requestToken.orders[i].order.orderStatusDescription + " "
-                   + "Data de criação de ordem: " + " - " + requestToken.orders[i].order.orderOpeningDate;
+                   + "Data de criação de ordem: " + " - " + requestToken.orders[i].order.;
                     lista.Add(end);
                     ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, lista);
                     mlistview.Adapter = adapter;
