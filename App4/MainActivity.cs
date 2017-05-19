@@ -16,7 +16,7 @@ using Android.Graphics;
 using Android.Content.Res;
 
 
-    namespace App4
+namespace App4
     {
     [Activity(Label = "App4", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
@@ -27,19 +27,13 @@ using Android.Content.Res;
         RestRequest cpf { get; set; }
         public RestClient consumer { get; set; }
         IRestResponse mensagemConsumer;
-        TextView txtsobrenome;
         RestClient orderId { get; set; }
         RestRequest requestorderId { get; set; }
         IRestResponse answerorder { get; set; }
         TextView txtnome;
-        TextView txtresp0;
-        TextView txtresp1;
-        TextView txtresp2;
-        TextView txtresp3;
-        TextView txtresp4;
         public List<string> lista;
         ListView mlistview;
-
+        
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -54,15 +48,19 @@ using Android.Content.Res;
             btnConsumer = FindViewById<Button>(Resource.Id.btnConsumer);
             btnConsumer.Click += BtnConsumer_Click;
             lista = new List<string>();
+           
         }
 
         private void BtnConsumer_Click(object sender, EventArgs e)
         {
+            
+
+                // API Consumer CPF
+                
             try
             {
-               
-                // API Consumer CPF
-
+              
+                
                 consumer = new RestClient("https://qa.api-latam.whirlpool.com/v1.0/consumers");
                 cpf = new RestRequest("/" + edtcpf.Text, Method.GET);
                 cpf.AddHeader("Content-Type", "application/json; charset=utf-8");
@@ -73,7 +71,7 @@ using Android.Content.Res;
                 
 
                     // API Consumer service-orders
-                    orderId = new RestClient("https://qa.api-latam.whirlpool.com/v1.0/consumers/");
+                orderId = new RestClient("https://qa.api-latam.whirlpool.com/v1.0/consumers/");
                 requestorderId = new RestRequest("/" + edtcpf.Text + "/service-orders", Method.GET);
                 requestorderId.AddHeader("Content-Type", "application/json; charset=utf-8");
                 requestorderId.AddHeader("Authorization", "Bearer fed6b2f0-7aba-3339-9813-7fc9387e2581");
@@ -85,7 +83,7 @@ using Android.Content.Res;
                 {
                     end = requestToken.orders[i].order.orderId + " " + "StatusCode" + " - " + requestToken.orders[i].order.orderStatusCode + " "
                    + "Status Description: " + " - " + requestToken.orders[i].order.orderStatusDescription + " "
-                   + "Data de criação de ordem: " + " - " + requestToken.orders[i].order.;
+                   + "Data de criação de ordem: " + " - " + requestToken.orders[i].order.orderOpeningDate;
                     lista.Add(end);
                     ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, lista);
                     mlistview.Adapter = adapter;

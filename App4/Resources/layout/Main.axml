@@ -32,11 +32,7 @@
         android:id="@+id/btnConsumer"
         android:textColor="@android:color/black"
         android:textColorHighlight="@android:color/black"
-        android:textStyle="bold"
-        xmlns:tools="http://schemas.android.com/tools"
-        tools:visibility="visible"
-        android:backgroundTint="#ff6d6d6d"
-        android:backgroundTintMode="src_in" />
+        android:textStyle="bold" />
     <TextView
         android:text="Nome"
         android:layout_width="match_parent"
@@ -53,5 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="422.0dp"
         android:id="@+id/listView2"
-        android:background="@android:color/black" />
+        android:background="@android:color/black"
+        android:layout_marginTop="0.0dp" />
+
 </LinearLayout>
