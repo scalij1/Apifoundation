@@ -29,7 +29,14 @@
         android:text="Consulta API"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/btnConsumer" />
+        android:id="@+id/btnConsumer"
+        android:textColor="@android:color/black"
+        android:textColorHighlight="@android:color/black"
+        android:textStyle="bold"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:visibility="visible"
+        android:backgroundTint="#ff6d6d6d"
+        android:backgroundTintMode="src_in" />
     <TextView
         android:text="Nome"
         android:layout_width="match_parent"
