@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:minWidth="25px"
     android:minHeight="25px"
     android:id="@+id/linearLayout1"
@@ -40,58 +40,11 @@
         android:textColorHint="@android:color/background_dark"
         android:textColorLink="@android:color/background_dark"
         android:textStyle="bold" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="45.0dp"
-        android:id="@+id/txtresp0"
-        android:textColor="@android:color/background_dark"
-        android:textStyle="bold"
-        android:textColorHighlight="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textColorLink="@android:color/black" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="52.5dp"
-        android:id="@+id/txtresp1"
-        android:textColor="@android:color/black"
-        android:textColorHighlight="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textColorLink="@android:color/black"
-        android:textStyle="bold" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="46.5dp"
-        android:id="@+id/txtresp2"
-        android:textColor="@android:color/background_dark"
-        android:textStyle="bold"
-        android:textColorHighlight="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textColorLink="@android:color/black" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="45.0dp"
-        android:id="@+id/txtresp3"
-        android:textColor="@android:color/background_dark"
-        android:textStyle="bold"
-        android:textColorHighlight="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textColorLink="@android:color/black" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="49.0dp"
-        android:id="@+id/txtresp4"
-        android:layout_marginTop="0.0dp"
-        android:layout_marginBottom="212.0dp"
-        android:textColor="@android:color/background_dark"
-        android:textStyle="bold"
-        android:textColorHighlight="@android:color/black"
-        android:textColorHint="@android:color/black"
-        android:textColorLink="@android:color/black" />
-    <GridView
+    <ListView
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/gridView2"
+        android:layout_height="422.0dp"
+        android:id="@+id/listView2"
         android:background="@android:color/black" />
 </LinearLayout>
