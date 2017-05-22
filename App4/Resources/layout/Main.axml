@@ -22,7 +22,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edtcpf"
-        android:background="@android:color/holo_orange_dark" />
+        android:background="@android:color/white"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
     <Button
         android:clickable="true"
         android:onClick="@android:string/search_go"

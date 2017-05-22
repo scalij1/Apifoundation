@@ -4,23 +4,13 @@ using Android.Widget;
 using Android.OS;
 using RestSharp;
 using Newtonsoft.Json;
-using Android.Util;
 using App4.Resources;
-using Newtonsoft.Json.Linq;
-using Org.Json;
-using System.Net;
-using System.IO;
 using System.Collections.Generic;
-using System.Globalization;
-using Android.Graphics;
-using Android.Content.Res;
-using App4.Dialogs;
-using Java.Lang;
 using System.Threading;
 
 namespace App4
 {
-    [Activity(Label = "App4", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Whirlpool Consulta de API", MainLauncher = true, Icon = "@drawable/icon")]
     public class MainActivity : Activity
     {
         EditText edtcpf;
@@ -35,6 +25,8 @@ namespace App4
         TextView txtnome;
         public List<string> lista;
         ListView mlistview;
+        private ProgressDialog mProgressDialog;
+
         // ImageView imageView;
 
         protected override void OnCreate(Bundle bundle)
@@ -65,10 +57,11 @@ namespace App4
              progress.Show();*/
 
             try
-            {               
-                txtnome.Text = "";
-                mlistview.Adapter = null;
-
+            {
+                var limpa = "";
+                
+                showbox("Iniciando Pesquisa...");
+                
                 consumer = new RestClient("https://qa.api-latam.whirlpool.com/v1.0/consumers");
                 cpf = new RestRequest("/" + edtcpf.Text, Method.GET);
                 cpf.AddHeader("Content-Type", "application/json; charset=utf-8");
@@ -86,16 +79,18 @@ namespace App4
                 answerorder = orderId.Execute(requestorderId);
                 var requestToken = JsonConvert.DeserializeObject<RootObject>(answerorder.Content);
                 var end = "";
+              
 
                 if (requestToken.orders != null)
                 {
+                    lista.Clear();
                     for (var i = 0; i < requestToken.orders.Count; i++)
                     {
+                        lista.Clear();
                         end = requestToken.orders[i].order.orderId + " " + "StatusCode" + " - " + requestToken.orders[i].order.orderStatusCode + " "
                        + "Status Description: " + " - " + requestToken.orders[i].order.orderStatusDescription;
                         lista.Add(end);
                         ArrayAdapter<string> adapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, lista);
-
                         mlistview.Adapter = adapter;
 
                     }
@@ -122,9 +117,11 @@ namespace App4
                 //LOAD METHOD TO GET ACCOUNT INFO
                 RunOnUiThread(() => Toast.MakeText(this, msg, ToastLength.Long).Show());
                 //HIDE PROGRESS DIALOG
-
+                RunOnUiThread(() => progressDialog.Dismiss());
                 RunOnUiThread(() => progressDialog.Hide());
             })).Start();
+            
+
         }
 
     }

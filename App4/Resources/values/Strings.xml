@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="Hello">Hello World, Click Me!</string>
-    <string name="ApplicationName">App4</string>
+    <string name="ApplicationName">Whirlpool Consulta de API</string>
   <string name ="resposta">mensagem.Text</string>  
 </resources>

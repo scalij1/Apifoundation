@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="App4.App4" android:versionCode="1" android:versionName="1.0" android:installLocation="preferExternal">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="App4.Whirlpool Consulta de API" android:versionCode="1" android:versionName="1.0" android:installLocation="preferExternal">
 	<uses-sdk android:minSdkVersion="16" />
-	<application android:label="App4" android:icon="@drawable/Icon"></application>
+	<application android:label="Whirlpool Consulta de API" android:icon="@drawable/Icon"></application>
 </manifest>
