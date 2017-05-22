@@ -118,6 +118,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoadingOverlay.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\CustomProgressDialog.cs" />
     <Compile Include="Resources\Order.cs" />
