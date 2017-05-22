@@ -86,7 +86,7 @@ namespace App4
                     lista.Clear();
                     for (var i = 0; i < requestToken.orders.Count; i++)
                     {
-                        lista.Clear();
+                        
                         end = requestToken.orders[i].order.orderId + " " + "StatusCode" + " - " + requestToken.orders[i].order.orderStatusCode + " "
                        + "Status Description: " + " - " + requestToken.orders[i].order.orderStatusDescription;
                         lista.Add(end);
